@@ -44,3 +44,11 @@ passport.use(new GoogleStrategy({
          return done(null, profile);
        }
 ));
+
+// if(profile._json.hd === "yourdomain.com"){
+//   // find or create user in database, etc
+//   User.find({ id: profile.id }).done(done);
+// }else{
+//   // fail        
+//   done(new Error("Invalid host domain"));
+// }
