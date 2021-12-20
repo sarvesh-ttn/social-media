@@ -1,7 +1,7 @@
-import Home from './components/dashboard/home';
-import Test from './components/preferences/test';
+import Login from './pages/login';
 import {Route,Routes,BrowserRouter} from "react-router-dom"
 import './App.css';
+import Feeds from './pages/feeds';
 
 function App() {
   return (
@@ -9,8 +9,8 @@ function App() {
     <div className="App">
         
          <Routes>
-                 <Route exact path='/' element={< Home />}></Route>
-                 <Route exact path='/test' element={< Test />}></Route>
+                 <Route exact path='/' element={< Login />}></Route>
+                 <Route exact path='/test' element={< Feeds />}></Route>
           </Routes>
          
     </div>

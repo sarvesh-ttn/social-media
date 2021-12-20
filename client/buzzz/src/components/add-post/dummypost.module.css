@@ -1,0 +1,5 @@
+.postbuttons{
+    display: flex;
+    background-color: lightseagreen;
+    justify-content: space-evenly;
+}

@@ -1,0 +1,23 @@
+.mainDiv{
+    background-color: rgb(138, 138, 138);
+    width:200px;
+    padding:10px 20px;
+    border-radius: 10px;
+}
+.icon{
+    width: 30px;
+    height: 30px;
+    border-radius: 8.5px;
+    background-size: 50%;
+    background-color: inherit;
+}
+.listDiv{
+    display: flex;
+    justify-content:start;
+}
+.listDiv>span{
+margin-top: 4px;;
+}
+.list{
+    list-style: none;
+}
