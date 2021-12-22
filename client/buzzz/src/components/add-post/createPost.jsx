@@ -1,18 +1,22 @@
 import React from 'react'
 import PhotoSizeSelectActualIcon from '@material-ui/icons/PhotoSizeSelectActual';
-import Pic from '../../assets/user-logo.png'
-import './createPost.css'
+import Pic from '../../assets/dp.png'
+import style from './createPost.module.css'
+import Avatar from "../../utils/avatar"
 
 const CreatePost = () => {
     return (
-        <div className='wrapper'>
-           <div className="postBox">
-           <img src={Pic} alt="" />
-           </div>
-            <div><input type="text" name="" className='postInput' id="" placeholder='Create a post' /></div>
-            <div className='photoIconDiv'>
-            <PhotoSizeSelectActualIcon className='photoIcon'/><span>photos/videos</span>
-            </div>
+        <div className={style.createPost}>
+          <div className={style.wrapper}>
+          <Avatar />
+           
+           <input type="text" name="" className={style.postInput} id="" placeholder='Create a post' />
+       <button className={style.postButton}>
+       <PhotoSizeSelectActualIcon className={style.photoIcon}/>photos/videos</button>
+          </div>
+          <button className={style.shareButton}>
+              Share
+          </button>
            </div>
     )
 }

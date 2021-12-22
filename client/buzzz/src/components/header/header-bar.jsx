@@ -1,6 +1,8 @@
 import "./header-bar.css";
 import { Search, Person, Chat, Notifications } from "@material-ui/icons";
 import { Link } from "react-router-dom";
+import Avatar from "../../utils/avatar"
+import Icon from "../../assets/person.jpg"
 // import { useContext } from "react";
 // import { AuthContext } from "../../context/AuthContext";
 
@@ -25,29 +27,14 @@ export default function HeaderBar() {
       </div>
       <div className="topbarRight">
         <div className="topbarIcons">
-        <div className="topbarLinks">
-            <span className="topbarAvatar"><span className="f">Hi</span></span>
-          <span className="topbarLink">Sarvesh Bhatt</span> 
-        </div>
-          <div className="topbarIconItem">
-            <Chat />
-          </div>
           <div className="topbarIconItem">
             <Person />
-            <span className="topbarIconBadge"></span>
+            <span className="topbarIconBadge">5</span>
           </div>
+        <Link to="/">
+          <Avatar pic={Icon}/>
+        </Link>
         </div>
-        {/* <Link to={`/profile/${user.username}`}>
-          <img
-            src={
-              user.profilePicture
-                ? PF + user.profilePicture
-                : PF + "person/noAvatar.png"
-            }
-            alt=""
-            className="topbarImg"
-          />
-        </Link> */}
       </div>
     </div>
   );

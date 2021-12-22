@@ -1,29 +1,31 @@
 import style from './contacts.module.css'
 import icon from '../../../assets/avatar.jpg'
+import Avatar from '../../../utils/avatar'
 
 const MyContacts = () => {
-    return (
+    return (        
         <div className={style.mainDiv}> 
-        <h3>Suggestions</h3>
+        <h3>Contacts</h3>
             <ul className={style.list}>
+                
                 <div className={style.listDiv}>
-                <img src={icon} className={style.icon} alt="" srcset="" />
-                <span>Sarvesh Bhatt</span>
+                <Avatar/>
+                <span>Harsh Joshi</span>
                 </div>
                 <div className={style.listDiv}>
-                <img src={icon} className={style.icon} alt="" srcset="" />
-                <span>Amit Thakur</span>
+                <Avatar/>
+                <span>Harsh Joshi</span>
                 </div>
                 <div className={style.listDiv}>
-                <img src={icon} className={style.icon} alt="" srcset="" />
-                <span>Chetan Singh</span>
+                <Avatar/>
+                <span>Harsh Joshi</span>
                 </div>
                 <div className={style.listDiv}>
-                <img src={icon} className={style.icon} alt="" srcset="" />
-                <span>Deepak Loshali</span>
+                <Avatar/>
+                <span>Harsh Joshi</span>
                 </div>
                 <div className={style.listDiv}>
-                <img src={icon} className={style.icon} alt="" srcset="" />
+                <Avatar/>
                 <span>Harsh Joshi</span>
                 </div>
                 

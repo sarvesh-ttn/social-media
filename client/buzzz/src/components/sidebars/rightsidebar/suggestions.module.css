@@ -1,22 +1,20 @@
 .mainDiv{
-    background-color: rgb(138, 138, 138);
+    background-color: rgb(243, 243, 243);
     width:200px;
+    margin-top:1rem ;
     padding:10px 20px;
     border-radius: 10px;
 }
-.icon{
-    width: 30px;
-    height: 30px;
-    border-radius: 8.5px;
-    background-size: 50%;
-    background-color: inherit;
-}
+
 .listDiv{
     display: flex;
-    justify-content:start;
+    justify-content:flex-start;
+    align-items: center;
+    margin:.5rem .2rem;
 }
-.listDiv>span{
-margin-top: 4px;;
+
+.listDiv>span {
+margin:.1rem .5rem ;
 }
 .list{
     list-style: none;

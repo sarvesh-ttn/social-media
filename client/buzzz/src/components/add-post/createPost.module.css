@@ -1,0 +1,47 @@
+.createPost{
+    background-color: rgb(218, 218, 218);
+    height:5.5rem;
+    margin:.4rem 1rem;
+    border-radius: 10px;
+    padding: 10px 5px;
+}
+.wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.postInput{
+    width:400px;
+    height: 30px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border:none;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);
+}
+.postInput:focus{
+    outline: none;
+}
+.avatarImage{
+    width:50px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.postButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    padding:.3rem;
+    border-radius: 5px;
+}
+.photoIcon{
+    margin-top: 1px;
+    color: lightgreen;
+}
+.shareButton{
+    margin:.5rem 1rem;
+    width:4rem;
+}

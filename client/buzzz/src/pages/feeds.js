@@ -1,17 +1,18 @@
 import styles from './feeds.module.css'
-import CreatePost from '../components/add-post/createPost';
 import Header from '../components/header/header-bar';
 import SideBarContainer from '../components/sidebars/rightsidebar/SideBarContainer';
-import DummyPost from '../components/add-post/dummyPost';
-
+import NewsFeed from '../components/newsfeed/newsFeed';
+import LeftSideBarContainer from '../components/sidebars/leftsidebar/leftsidebarcontainer';
+import {useSelector} from "react-redux"
 const Feeds = () => {
+    // const selector = useSelector(store => store.increment)
     return (
-        <div>
+        <div className={styles.mainDiv}>
             <Header />
             <div className={styles.wrapper}>
-            <CreatePost/>
-            <DummyPost/>
-            {/* <SideBarContainer/> */}
+            <LeftSideBarContainer />
+            <NewsFeed />
+            <SideBarContainer/>
             </div>
         </div>
     )
