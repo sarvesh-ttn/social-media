@@ -1,6 +1,5 @@
 import React from 'react'
 import icon from '../../assets/person.jpg'
-import profile from '../../assets/dp.png'
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ThumbDownAltIcon from '@material-ui/icons/ThumbDownAlt';
 import CommentIcon from '@material-ui/icons/Comment';

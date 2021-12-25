@@ -1,10 +1,11 @@
 import  style  from './avatar.module.css'
-import Pic from '../assets/dp.png'
+import Pic from '../assets/person.jpg'
 
 const Avatar = (props) => {
+    const pic = props.image
     return (
         <div className={style.mainDiv}>
-            <img className={style.avatarImage} src={props.pic? props.pic:Pic} alt="" />
+            <img className={style.avatarImage} src={pic? pic:Pic} alt="" />
         </div>
     )
 }

@@ -1,13 +1,13 @@
 import "./header-bar.css";
-import { Search, Person, Chat, Notifications } from "@material-ui/icons";
+import { Search, Person,} from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import Avatar from "../../utils/avatar"
 import Icon from "../../assets/person.jpg"
-// import { useContext } from "react";
-// import { AuthContext } from "../../context/AuthContext";
+import {useSelector} from "react-redux"
 
 export default function HeaderBar() {
-//   const { user } = useContext(AuthContext);
+ 
+  const image = useSelector(store => store.profile.user.profilePic);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   return (
     <div className="topbarContainer">
@@ -32,7 +32,7 @@ export default function HeaderBar() {
             <span className="topbarIconBadge">5</span>
           </div>
         <Link to="/">
-          <Avatar pic={Icon}/>
+          <Avatar image={image}/>
         </Link>
         </div>
       </div>

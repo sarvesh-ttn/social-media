@@ -1,7 +1,8 @@
-
-// export default function SaveReducer (state,action){
-//     switch (action.type) {
-//         default: return state
-//             break;
-//     }
-// }
+import {combineReducers} from 'redux';
+import userReducer from "./userReducer";
+import profileReducer from "./profileReducer"
+const reducers = combineReducers({
+    allUsers:userReducer,
+    profile:profileReducer
+});
+export default reducers
