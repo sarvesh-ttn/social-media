@@ -6,6 +6,7 @@ import Avatar from '../../../utils/avatar'
 
 const MyContacts = () => {
     const response = useSelector(state=>state.allUsers.users);
+    const {username,_id,profilePic} = response;
     const dispatch = useDispatch()
     useEffect(()=>{
         dispatch(getUsers())
@@ -14,16 +15,15 @@ const MyContacts = () => {
         <div className={style.mainDiv}> 
         <h3>Contacts</h3>
             <ul className={style.list}>
-                { response.map((user)=>{
-                    console.log('hi');
-                const {username,_id,profilePic} = user;
-                return(
+                {/* { response.map((user)=>{ */}
+    
+                {/* return( */}
                 <div className={style.listDiv} key={_id}>
                 <Avatar props={profilePic}/>
                 <span>{username}</span>
                 </div>
-                )})
-                }    
+                {/* )}) */}
+                {/* }     */}
         </ul>
         </div>
     )

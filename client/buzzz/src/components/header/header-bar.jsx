@@ -8,11 +8,11 @@ import {useSelector} from "react-redux"
 export default function HeaderBar() {
  
   const image = useSelector(store => store.profile.user.profilePic);
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const url = process.env.REACT_APP_API_ENDPOINT;
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
-        <Link to="/" style={{ textDecoration: "none" }}>
+        <Link to="/home" style={{ textDecoration: "none" }}>
           <div className="logo"></div>
         </Link>
       </div>
@@ -31,7 +31,7 @@ export default function HeaderBar() {
             <Person />
             <span className="topbarIconBadge">5</span>
           </div>
-        <Link to="/">
+        <Link to="/myprofile">
           <Avatar image={image}/>
         </Link>
         </div>

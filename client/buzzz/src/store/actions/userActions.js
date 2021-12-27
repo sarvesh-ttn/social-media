@@ -3,13 +3,9 @@ import axios from "../../axios"
 export const getUsers = ()=> async(dispatch)=>{
         const response = await axios({
             method:'GET',
-            url:'/user/all'
+            url:'/user/friends/61baf755f588d58a7e1ee2cd'
         }) 
-        // const user = await axios({
-        //     method:'GET',
-        //     url:'/user'
-        // }) 
-        // console.log(user);
+        
         dispatch({type:ActionTypes.GET_USERS,payload:response.data})
-        // dispatch({type:ActionTypes.GET_USER,payload:user.data})
+
 };

@@ -1,3 +1,6 @@
+import { useEffect } from 'react'
+import {useDispatch,useSelector} from "react-redux"
+import { useParams } from "react-router-dom";
 import CoverImage from "../../utils/cover";
 import DisplayImage from "../../utils/displayimage";
 import style from "./friendprofile.module.css";
@@ -5,6 +8,12 @@ import Icon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
 
 const FriendProfile = () => {
+  const response = useSelector()
+  const dispatch = useDispatch()
+  const { userId } = useParams();
+  useEffect(()=>{
+      dispatch(getUsers(userId))
+  },[])
   return (
     <div className={style.wrapper}>
       <div className={style.profileCover}>
