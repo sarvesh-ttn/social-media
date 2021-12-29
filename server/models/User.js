@@ -1,6 +1,7 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema;
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = Schema({
     username:{
         type:String,
         required:true,
@@ -9,7 +10,7 @@ const UserSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    password:{
+    googleId:{
         type:String,
     },
     profilePic:{
@@ -20,19 +21,17 @@ const UserSchema = new mongoose.Schema({
         type:String,
         default:""
     },
-    followers:{
-        type:Array,
-        default:[]
-    },
-    following:{
-        type:Array,
-        default:[]
-    },
     isAdmin:{
         type:Boolean,
         default:false,
     },
-    friends:{
+    notifications: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+    sentRequests:{
+        type:Array,
+        default:[]
+    },
+    friends:[{ type: Schema.Types.ObjectId, ref: 'User' }],
+    posts:{
         type:Array,
         default:[]
     }

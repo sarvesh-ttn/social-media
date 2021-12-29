@@ -12,6 +12,7 @@ passport.serializeUser(function(user, done) {
   });
 
  const User = require('./models/User');
+//  const User = require('./index')
 
 passport.use(new GoogleStrategy({
     clientID: '683705606806-g5rh49i574mur1426sq0qbdjgfbnlg11.apps.googleusercontent.com',
@@ -20,6 +21,7 @@ passport.use(new GoogleStrategy({
   },
   async function(accessToken, refreshToken, profile, done) {
         try{
+          console.log(typeof User);
           const fetchedUser = await User.findOne({
             email:profile.emails[0].value
           })

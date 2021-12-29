@@ -1,6 +1,5 @@
 const router    = require('express').Router();
 const passport  = require('passport');
-const cors      = require('cors')
 require('../passport-setup');
 
 
@@ -13,33 +12,20 @@ const isLoggedIn =(req,res,next)=>{
         res.sendStatus(401);
     }
 }
-router.use(cors({
-    origin:'http://localhost:3000',
-}))
-router.get('/',(req,res)=>{
-    res.send('not logged in')
-})
+
+
 router.get('/google',
   passport.authenticate('google', { scope: ['profile','email'] })
   );
 
   router.get('/google/callback', 
-    passport.authenticate('google', { failureRedirect: '/login' }),
+    passport.authenticate('google', { failureRedirect: 'http://localhost:3000' }),
     function(req, res) {
       // Successful authentication, redirect home.
-      console.log('hello');
-      console.log(req.user);
-      res.redirect('http://localhost:3000/test');
+    //   console.log('hello');
+    //   console.log(req.user);
+      res.redirect('http://localhost:3000/home');
     });
-
-router.get('/failed',(req,res)=>{
-    res.send('failed to login')
-})
-
-router.get('/success',isLoggedIn,(req,res)=>{
-    res.send(`successfully logged in mr ${req.user.displayName}`)
-})
-
 
 router.get('/logout',(req,res)=>{
     req.session =null;

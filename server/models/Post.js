@@ -8,13 +8,25 @@ likes:{
     type:Array,
     default:[]
 },
+dislike:{
+    type:Array,
+    default:[] 
+},
  desc:{
      type:String,
      default:"",
      max:500
  },
 img:{
-    type:String
+    type:Array
+},
+isFlagged:{
+    type:Boolean,
+    default:false
+},
+isVerified:{
+    type:Boolean,
+    default:false,
 },
 comments:{
     type:Array
