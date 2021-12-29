@@ -6,13 +6,14 @@ import Avatar from "../../../utils/avatar";
 import style from "./suggestions.module.css";
 
 const Suggestions = () => {
-  const response = useSelector((state) => state.suggested.suggestedUsers);
-  const {userId} = useParams()
+  const loggedUserId = useSelector((state)=>state.profile.user._id)
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(suggestedUser());
-  }, []);
-  console.log(response," userId",userId);
+    dispatch(suggestedUser(loggedUserId));
+
+  }, [loggedUserId]);
+  
+  const response = useSelector((state) => state.suggested.suggestedUsers);
   return (
     <div className={style.mainDiv}>
       <h3>Suggestions</h3>

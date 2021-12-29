@@ -2,6 +2,7 @@ import "./header-bar.css";
 import { Search, Person,} from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import Avatar from "../../utils/avatar"
+import SimpleDialogDemo from "./friendRequestDialog";
 import Icon from "../../assets/person.jpg"
 import {useSelector} from "react-redux"
 
@@ -28,8 +29,7 @@ export default function HeaderBar() {
       <div className="topbarRight">
         <div className="topbarIcons">
           <div className="topbarIconItem">
-            <Person />
-            <span className="topbarIconBadge">5</span>
+            <SimpleDialogDemo />
           </div>
         <Link to="/myprofile">
           <Avatar image={image}/>

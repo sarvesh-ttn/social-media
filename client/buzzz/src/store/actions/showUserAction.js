@@ -1,9 +1,10 @@
 import {ActionTypes} from "../contents/action-type.js"
 import axios from "../../axios"
-export const getUser = ()=> async(dispatch)=>{
+export const showUser = (id)=> async(dispatch)=>{
     const response = await axios({
         method:'GET',
-        url:'/user/profile/'
+        url:`/user/profile/${id}`
     })
-    dispatch({type:ActionTypes.GET_USER,payload:response.data})
+ 
+    dispatch({type:ActionTypes.SHOW_USER,payload:response.data})
 };

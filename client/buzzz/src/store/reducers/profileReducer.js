@@ -9,6 +9,8 @@ const initialState ={
                 case ActionTypes.GET_USER:
                     
                     return {...state,user:payload}
+                    case ActionTypes.ADD_USER:
+                        return {...state,user:payload}
                     
          default: return state;
      }

@@ -3,6 +3,7 @@ import MyContacts from './Contacts'
 import Suggestions from './Suggestions'
 
 const SideBarContainer = () => {
+   
     return (
         <div className={styles.sidebar}>
             <MyContacts />

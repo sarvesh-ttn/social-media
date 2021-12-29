@@ -15,15 +15,15 @@ const MyContacts = () => {
         <div className={style.mainDiv}> 
         <h3>Contacts</h3>
             <ul className={style.list}>
-                {/* { response.map((user)=>{ */}
-    
-                {/* return( */}
-                <div className={style.listDiv} key={_id}>
-                <Avatar props={profilePic}/>
-                <span>{username}</span>
+                { response.map((user)=>{ 
+                    const {name,id,pic} =user
+                 return( 
+                <div className={style.listDiv} key={id}>
+                <Avatar props={pic}/>
+                <span>{name}</span>
                 </div>
-                {/* )}) */}
-                {/* }     */}
+                 )}) 
+                }    
         </ul>
         </div>
     )

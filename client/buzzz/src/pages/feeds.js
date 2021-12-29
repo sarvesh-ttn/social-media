@@ -5,13 +5,14 @@ import NewsFeed from '../components/newsfeed/newsFeed';
 import LeftSideBarContainer from '../components/sidebars/leftsidebar/leftsidebarcontainer';
 
 const Feeds = () => {
+   
     return (
         <div className={styles.mainDiv}>
             <Header />
             <div className={styles.wrapper}>
             <LeftSideBarContainer />
             <NewsFeed />
-            <SideBarContainer/>
+            <SideBarContainer />
             </div>
         </div>
     )
