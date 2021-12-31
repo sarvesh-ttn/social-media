@@ -3,7 +3,7 @@ import GoogleLogin from '../components/Login/googleLogin'
 
 const Login = () => {
     return (
-        <div>
+        <div style={{paddingTop:"10rem",height:"100vh"}}>
             <GoogleLogin />
         </div>
     )

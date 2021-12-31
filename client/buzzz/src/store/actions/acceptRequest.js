@@ -8,7 +8,7 @@ export const acceptRequest = (props)=> async(dispatch)=>{
             },
             url:`user/profile/acceptFriend/${props.loggedUserId}`
         }) 
-        console.log(response,'from actions');
+       
         dispatch({type:ActionTypes.ACCEPT_USER,payload:response.data})
 
 };

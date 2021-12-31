@@ -3,13 +3,23 @@ import { Search, Person,} from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import Avatar from "../../utils/avatar"
 import SimpleDialogDemo from "./friendRequestDialog";
-import Icon from "../../assets/person.jpg"
+import { TextField } from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
 import {useSelector} from "react-redux"
+import axios from "../../axios"
 
 export default function HeaderBar() {
  
   const image = useSelector(store => store.profile.user.profilePic);
+
   const url = process.env.REACT_APP_API_ENDPOINT;
+  const logoutHandler = ()=>{
+   const res=  axios({
+      method:'GET',
+      url:`/user/logout`
+    })
+    console.log(res,'hi');
+  }
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
@@ -18,8 +28,8 @@ export default function HeaderBar() {
         </Link>
       </div>
       <div className="topbarCenter">
-        <div className="searchbar">
-          <Search className="searchIcon" />
+        <div className="searchbar" >
+          <SearchIcon />
           <input
             placeholder="Search for friend"
             className="searchInput"
@@ -33,7 +43,9 @@ export default function HeaderBar() {
           </div>
         <Link to="/myprofile">
           <Avatar image={image}/>
-        </Link>
+        </Link>    
+          <button className="logoutButton" onClick={()=>{logoutHandler()}}>Sign Out</button>
+
         </div>
       </div>
     </div>

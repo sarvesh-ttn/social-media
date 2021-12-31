@@ -44,6 +44,17 @@ module.exports.suggestedUserFriends = async(userId)=>{
 
     return allUsers;
 }
+module.exports.showRequests = async(loggedUserId)=>{
+    const user = await userData.findOne({_id:loggedUserId}).populate('notifications')
+    const userFriends = user.notifications.map(item=>{
+        return{
+            name:item.username,
+            id:item._id,
+            pic:item.profilePic
+        }
+    })
+    return userFriends;
+}
 // add friends
 module.exports.addUser = async({loggedId,addUserId})=>{
    

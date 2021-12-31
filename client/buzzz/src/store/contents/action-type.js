@@ -5,5 +5,8 @@ export const ActionTypes = {
     SHOW_USER       : "SHOW USER",
     ACCEPT_USER     : "ACCEPT USER",
     GET_FRIENDS     : "GET FRIENDS",
-    ADD_USER        : "ADD USER"
+    ADD_USER        : "ADD USER",
+    SHOW_REQUESTS   : "SHOW REQUESTS",
+    GET_POST        : "GET POST",
+    GET_ALL_POSTS   : "GET ALL POSTS"
 }

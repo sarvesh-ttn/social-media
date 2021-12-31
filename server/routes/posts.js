@@ -2,7 +2,8 @@ const router         = require('express').Router();
 const postController = require('../controllers/postController')
 
 router.post('/create',postController.createPost)
-router.put("/:id/like",postController.likePost)
-router.get('/:id',postController.getPost)
-router.put('/:id/comment',postController.addComment)
+router.put("/like/:id",postController.likePost)
+router.get('/getPost/:id',postController.getPost)
+router.get('/allPosts/:id',postController.getAllPosts)
+router.put('/comment/:id',postController.addComment)
 module.exports =  router 

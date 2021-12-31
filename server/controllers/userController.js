@@ -22,6 +22,7 @@ module.exports.getAllUser = async(req,res)=>{
         res.status(500).json(err)
     }
 }
+// api for adding dummy users
 module.exports.createUser = async(req,res)=>{
     const {username,email} = req.body
     try{
@@ -69,6 +70,17 @@ module.exports.suggestedFriends = async(req,res)=>{
         res.status(500).json(err)
     }
 
+}
+module.exports.showRequests = async(req,res)=>{
+    const loggedUserId = req.params.id;
+    try{
+        const showUserRequests = await users.showRequests(loggedUserId);
+        res.status(200).json(showUserRequests)
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).json(err)
+    }
 }
 module.exports.addUser = async(req,res)=>{
     // console.log(req.body.userId,req.params.id);

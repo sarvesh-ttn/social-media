@@ -4,6 +4,7 @@ import styles from './googleLogin.module.css'
 const GoogleLogin = () => {
    
     return (
+     
         <div className={styles.wrapper}>
             <div className={styles.logo}>
             </div>
@@ -20,6 +21,7 @@ const GoogleLogin = () => {
             </button>
             </div>
         </div>
+    
     )
 }
 

@@ -1,3 +1,5 @@
+const ObjectId = require('mongoose').Types.ObjectId;
+const userData = require('./User');
 const Post = require('./Post')
 
 // create a Post
@@ -13,19 +15,22 @@ module.exports.createPost = async(userId,desc,img)=>{
     }
 }
 // like-dislike a Post
-module.exports.likePost = async({likeId,postId})=>{
+module.exports.likePost = async({likedUsername,postId})=>{
     try{
-        console.log("service db query 1",likeId,postId);
         const fetchedPost = await Post.findById(postId);
+       
         
-        if(!fetchedPost.likes.includes(likeId)){
-            await fetchedPost.updateOne({$push:{likes:likeId}})
-            console.log("liked",fetchedPost);
-            return fetchedPost
+        if(!fetchedPost.likes.includes(likedUsername)){
+            console.log('inside if');
+           const newPost= await fetchedPost.updateOne({$push:{likes:likedUsername}})
+            console.log(newPost,'from ll');
+            return newPost;
         }
         else{
-            await fetchedPost.updateOne({$pull:{likes:likeId}});
-            console.log(" disliked",fetchedPost);
+            console.log('inside else');
+            await fetchedPost.updateOne({$pull:{likes:likedUsername}});
+        
+           
            return fetchedPost
         }
     }
@@ -34,15 +39,44 @@ module.exports.likePost = async({likeId,postId})=>{
     }
 }
 // get a Post
-module.exports.getPost = async(postId)=>{
+module.exports.getPost = async(id)=>{
     try{
-        const fetchedPost = await Post.findById(postId)
+        const fetchedPost = await Post.find({userId:id})
         return fetchedPost
     }
     catch(err){
         return err;
     }
 }
+// get all Posts
+module.exports.getAllPosts = async(user)=>{
+    try{
+        console.log('user',user);
+        // const loggedUser      = await userData.findById(id)
+        // const {username,profilePic} = loggedUser
+        // let loggedUserPosts = await Post.find({userId:id}).lean();
+        const ll = await Post.find({ userId: { $in: [user._id, ...user.friends] } }).populate('userId');
+        console.log(ll,'jk');
+        // const updatedLoggedUserPosts = loggedUserPosts.map(item=>({...item,name:username,pic:profilePic}))
+        // const friendPosts  = await Promise.all(loggedUser.friends.map(async(friendId)=>{
+        //     const friend = await userData.find({_id:friendId});
+        //     const {username,profilePic} = friend[0];
+        //     let friendPost = await Post.find({userId:friendId}).lean();
+        //     if(friendPost.length!==0){
+        //         friendPost.
+        //     }
+        //     else return {};
+        // }))
+       
+        
+        return ll
+    }
+    
+    catch(err){
+        return err;
+    }
+}
+
 // comment on a Post 
 module.exports.addComment = async({desc,comment_id,postId})=>{
     try{

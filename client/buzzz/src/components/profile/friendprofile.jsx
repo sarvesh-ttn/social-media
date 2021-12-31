@@ -11,32 +11,21 @@ import Button from '@material-ui/core/Button';
 import { addUser } from '../../store/actions/addUser';
 
 const FriendProfile = () => {
-  const [isFriends, setIsFriends] = useState(false)
+  const [isFriends, setIsFriends] = useState(false);
   const response = useSelector(state=>state.showProfile.userProfile)
   const loggedUserProfile = useSelector(state=>state.profile.user)
   const loggedUserProfileId = loggedUserProfile._id
   const dispatch = useDispatch()
   const { id } = useParams();
   const {email,username} = response
-  // console.log(response,'fp se');
-  async function foo(){
-
-     if(response.notifications.includes(loggedUserProfileId)){
-      setIsFriends(true)
-    }
-    else{
-          setIsFriends(false)
-    }
-  }
   const  addFriendHandler =async(props)=>{
-    dispatch(addUser({loggedUserProfileId,id}))
-    await foo();
     setIsFriends(true)
+    dispatch(addUser({loggedUserProfileId,id}))
   }
   useEffect(()=>{
-      dispatch(showUser(id))
-      dispatch(getUser())
-  },[id])
+    dispatch(showUser(id))
+    dispatch(getUser())
+  },[id,isFriends])
   return (
     <div className={style.wrapper}>
       <div className={style.profileCover}>
@@ -51,7 +40,7 @@ const FriendProfile = () => {
         <p>Working at To The New</p>
       </div>
       <div className={style.addFriendButton}> 
-      {isFriends ?  
+      { true ?  
       <Button
       variant="contained"
       color="primary"

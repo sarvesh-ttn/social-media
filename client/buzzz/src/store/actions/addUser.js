@@ -8,6 +8,6 @@ export const addUser = ({loggedUserProfileId,id})=> async(dispatch)=>{
         },
         url:`/user/profile/addFriend/${loggedUserProfileId}`
     })
-    console.log(response,'from addUSeraction');
+
     dispatch({type:ActionTypes.ADD_USER,payload:response.data})
 };

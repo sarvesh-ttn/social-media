@@ -2,21 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import Avatar from '@material-ui/core/Avatar';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemText from '@material-ui/core/ListItemText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 import PersonIcon from '@material-ui/icons/Person';
 import CheckIcon from '@material-ui/icons/Check';
 import { blue } from '@material-ui/core/colors';
-import { useState,useEffect } from 'react'
+import { useEffect } from 'react'
 import {useDispatch,useSelector} from "react-redux"
-import {getUsers} from "../../store/actions/userActions"
 import { acceptRequest } from '../../store/actions/acceptRequest';
-import { useParams } from 'react-router-dom';
+import { showRequests} from '../../store/actions/userRequests'
 
 
 const useStyles = makeStyles({
@@ -32,12 +29,11 @@ const useStyles = makeStyles({
 });
 
 function SimpleDialog(props) {
-    const response            = useSelector((state)=>state.allUsers.users)
+    const response            = useSelector((state)=>state.requestFriends.users)
     const loggedUserId        = useSelector((state)=>state.profile.user._id)
     const dispatch = useDispatch();
     useEffect(() => {
-      console.log('first');
-        dispatch(getUsers(loggedUserId))
+        dispatch(showRequests(loggedUserId))
     }, [loggedUserId,dispatch])
 
     const classes = useStyles();

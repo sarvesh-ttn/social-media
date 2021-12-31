@@ -32,6 +32,7 @@
   
   .searchbar {
     width: 100%;
+    padding:2px 5px;
     height: 30px;
     background-color: rgb(251, 251, 251);
     border-radius: 30px;
@@ -45,9 +46,11 @@
   }
   
   .searchInput {
+    display: block;
+    width: 100%;
     border: none;
-    width: 90%;
-    background-color: inherit;
+    padding:1px;
+
   }
   
   .searchInput:focus {
@@ -102,3 +105,8 @@
     justify-content: center;
     font-size: 12px;
   }
+.logoutButton{
+  margin:8px;
+  padding: 5px;
+  cursor: pointer;
+}

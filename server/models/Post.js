@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const PostSchema = new mongoose.Schema({
+const PostSchema = Schema({
 userId:{
-    type:String
+    type: String,
+    ref: 'User' 
 },
 likes:{
     type:Array,
