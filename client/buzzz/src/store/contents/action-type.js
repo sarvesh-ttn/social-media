@@ -8,5 +8,7 @@ export const ActionTypes = {
     ADD_USER        : "ADD USER",
     SHOW_REQUESTS   : "SHOW REQUESTS",
     GET_POST        : "GET POST",
-    GET_ALL_POSTS   : "GET ALL POSTS"
+    GET_ALL_POSTS   : "GET ALL POSTS",
+    ADD_COMMENT     : "ADD COMMENT",
+    CREATE_POST     : "CREATE POST"
 }

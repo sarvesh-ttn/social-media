@@ -6,6 +6,7 @@ import showProfileReducer from './showProfileReducer';
 import userRequestReducer from './userRequestReducer';
 import postReducer from './postReducer';
 import allPostsReducer from './allPostsReducer';
+import commentReducer from './commentsReducer';
 
 const reducers = combineReducers({
     allUsers:userReducer,
@@ -14,6 +15,7 @@ const reducers = combineReducers({
     showProfile:showProfileReducer,
     requestFriends:userRequestReducer,
     post:postReducer,
-    allPosts:allPostsReducer
+    allPosts:allPostsReducer,
+    allComments:commentReducer
 });
 export default reducers

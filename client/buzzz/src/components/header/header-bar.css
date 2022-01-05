@@ -28,6 +28,7 @@
   
   .topbarCenter {
     flex: 5;
+    visibility: hidden;
   }
   
   .searchbar {

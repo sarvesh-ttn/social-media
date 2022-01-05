@@ -3,7 +3,7 @@
     height:5.5rem;
     margin:.4rem 1rem;
     border-radius: 10px;
-    padding: 10px 5px;
+    padding: 1rem 2rem;
 }
 .wrapper{
     display: flex;
@@ -28,6 +28,10 @@
     border-radius: 50%;
     object-fit: cover;
 }
+.inputTextForm{
+    display: flex;
+    justify-content: space-around;
+}
 .postButton{
     display: flex;
     align-items: center;
@@ -42,6 +46,10 @@
     color: lightgreen;
 }
 .shareButton{
-    margin:.5rem 1rem;
-    width:4rem;
+  margin: .5rem;
+  border: none;
+  padding: .1rem;
+  width: 4rem;
+  cursor: pointer;
+  background-color: lightgreen;
 }

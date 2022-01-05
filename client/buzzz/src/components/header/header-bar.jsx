@@ -42,10 +42,8 @@ export default function HeaderBar() {
             <SimpleDialogDemo />
           </div>
         <Link to="/myprofile">
-          <Avatar image={image}/>
+          <Avatar Image={image}/>
         </Link>    
-          <button className="logoutButton" onClick={()=>{logoutHandler()}}>Sign Out</button>
-
         </div>
       </div>
     </div>

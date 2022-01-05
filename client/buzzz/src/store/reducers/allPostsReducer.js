@@ -8,6 +8,8 @@ const initialState ={
         
                 case ActionTypes.GET_ALL_POSTS:
                     return {...state,posts:payload}
+                case ActionTypes.CREATE_POST:
+                    return {...state,posts:payload}
          default: return state;
      }
  }

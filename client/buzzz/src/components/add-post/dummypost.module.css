@@ -49,18 +49,28 @@
 }
 .addComment{
     display: flex;
+    justify-content: flex-start;
     margin:.4rem .2rem;
+    padding: .2rem;
 }
 .commentText{
     margin:.2rem;
     padding:.3rem .8rem;
-    width: 100%;
+    display: block;
+    width: 30rem;
     border: none;
     background-color: lightgray;
     border-radius: 15px;
 }
 .commentText:focus{
     outline: none;
+}
+.addCommentButton{
+    width: 3rem;
+    height: 1.5rem;
+    margin:.3rem;
+    cursor: pointer;
+    background-color: rgb(119, 119, 255);
 }
 .showComment{
     display: flex;
