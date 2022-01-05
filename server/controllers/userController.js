@@ -2,9 +2,6 @@ const users = require('../models/userService');
 
 module.exports.getUser =async(req,res)=>{
     try{
-        // const user = await users.getUser(req.)
-        console.log(req);
-        console.log(req.user,'hi');
         res.status(200).json(req.user)
     }
     catch(err){

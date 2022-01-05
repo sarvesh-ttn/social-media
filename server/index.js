@@ -41,4 +41,3 @@ app.use('/post',postRoute)
 app.listen(PORT,()=>{
     console.log(`Server running at PORT ${PORT}`);
 })
-// module.exports = dbUser

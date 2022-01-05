@@ -15,23 +15,42 @@ module.exports.createPost = async(userId,desc,img)=>{
     }
 }
 // like-dislike a Post
-module.exports.likePost = async({likedUsername,postId})=>{
+module.exports.likePost = async({likedUsernameId,postId})=>{
     try{
         const fetchedPost = await Post.findById(postId);
-       
         
-        if(!fetchedPost.likes.includes(likedUsername)){
-            console.log('inside if');
-           const newPost= await fetchedPost.updateOne({$push:{likes:likedUsername}})
-            console.log(newPost,'from ll');
+        if(!fetchedPost.likes.includes(likedUsernameId)){
+           const newPost= await fetchedPost.updateOne({$push:{likes:likedUsernameId}})
+         
             return newPost;
         }
-        else{
-            console.log('inside else');
-            await fetchedPost.updateOne({$pull:{likes:likedUsername}});
+        else{  
+            await fetchedPost.updateOne({$pull:{likes:likedUsernameId}});
+            return fetchedPost
+        }
+    }
+    catch(err){
+        return err;
+    }
+}
+// dislike a post
+module.exports.dislikePost = async({dislikedUsernameId,postId})=>{
+    try{
+        const fetchedPost = await Post.findById(postId);
         
-           
-           return fetchedPost
+        if(!fetchedPost.dislike.includes(dislikedUsernameId)){
+          if(!fetchedPost.likes.includes(dislikedUsernameId)){
+              const newPost= await fetchedPost.updateOne({$push:{dislike:dislikedUsernameId}})
+               return newPost;
+          }
+          else{
+            const newPost= await fetchedPost.updateOne({$push:{dislike:dislikedUsernameId},$pull:{likes:dislikedUsernameId}})
+               return newPost;
+          }
+        }
+        else{  
+            await fetchedPost.updateOne({$pull:{dislike:dislikedUsernameId}});
+            return fetchedPost
         }
     }
     catch(err){
@@ -51,25 +70,8 @@ module.exports.getPost = async(id)=>{
 // get all Posts
 module.exports.getAllPosts = async(user)=>{
     try{
-        console.log('user',user);
-        // const loggedUser      = await userData.findById(id)
-        // const {username,profilePic} = loggedUser
-        // let loggedUserPosts = await Post.find({userId:id}).lean();
-        const ll = await Post.find({ userId: { $in: [user._id, ...user.friends] } }).populate('userId');
-        console.log(ll,'jk');
-        // const updatedLoggedUserPosts = loggedUserPosts.map(item=>({...item,name:username,pic:profilePic}))
-        // const friendPosts  = await Promise.all(loggedUser.friends.map(async(friendId)=>{
-        //     const friend = await userData.find({_id:friendId});
-        //     const {username,profilePic} = friend[0];
-        //     let friendPost = await Post.find({userId:friendId}).lean();
-        //     if(friendPost.length!==0){
-        //         friendPost.
-        //     }
-        //     else return {};
-        // }))
-       
-        
-        return ll
+        const allPosts = await Post.find({ userId: { $in: [user._id, ...user.friends] } }).populate('userId');     
+        return allPosts;
     }
     
     catch(err){
@@ -78,10 +80,12 @@ module.exports.getAllPosts = async(user)=>{
 }
 
 // comment on a Post 
-module.exports.addComment = async({desc,comment_id,postId})=>{
+module.exports.addComment = async({desc,userId,postId})=>{
     try{
         const fetchedPost = await Post.findById(postId)
-        await fetchedPost.updateOne({$push:{comments:{desc,comment_id}}})
+        const commentUser = await userData.findById(userId)
+        const {username,profilePic} = commentUser
+        await fetchedPost.updateOne({$push:{comments:{desc,userId,username,profilePic}}})
         return fetchedPost
     }
     catch(err){
