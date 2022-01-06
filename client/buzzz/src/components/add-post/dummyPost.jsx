@@ -61,7 +61,7 @@ const DummyPost = ({data}) => {
             <div className={style.desc}>
                 <p className={style.postDesc}>{desc} </p>
                 {img[0] &&
-                 <img src={person} alt=""className={style.postImage} />}
+                 <img src={img[0]?img[0]:person} alt=""className={style.postImage} />}
             </div>
             <div className={style.desc}>
                <span>{likes?.length} likes</span>

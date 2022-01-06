@@ -4,14 +4,12 @@
     margin:.4rem 1rem;
     border-radius: 10px;
     padding: 1rem 2rem;
-}
-.wrapper{
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
 }
+
 .postInput{
-    width:400px;
+    width:200px;
     height: 30px;
     padding: 5px 10px;
     border-radius: 10px;
@@ -30,16 +28,7 @@
 }
 .inputTextForm{
     display: flex;
-    justify-content: space-around;
-}
-.postButton{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border: none;
-    padding:.3rem;
-    border-radius: 5px;
+    /* margin-bottom: 2rem; */
 }
 .photoIcon{
     margin-top: 1px;
@@ -49,7 +38,7 @@
   margin: .5rem;
   border: none;
   padding: .1rem;
-  width: 4rem;
+  /* width: 4rem; */
   cursor: pointer;
   background-color: lightgreen;
 }
