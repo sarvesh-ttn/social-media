@@ -1,13 +1,11 @@
-const { json } = require('body-parser');
 const posts = require('../models/postService')
 // create a post
 module.exports.createPost =async(req,res)=>{
     const {userId,desc,img} = req.body
-   
-    // console.log('controller says hi',userId,desc,img);
     try{
-        // console.log('entered try block');
+        console.log(userId,desc,img,'from crreate post controller');
         const newPost = await posts.createPost({userId,desc,img})
+        console.log(newPost,'createdPost');
         res.status(201).json(newPost);
         }
         catch(err){
@@ -71,7 +69,6 @@ module.exports.addComment = async(req,res)=>{
 // get all posts
 module.exports.getAllPosts = async(req,res)=>{
     try{
-        
         let getAllPosts = await posts.getAllPosts(req.user)
         res.status(200).json(getAllPosts)
     }

@@ -1,13 +1,16 @@
+// const { cloudinary } = require('./utils/cloudinary');
 const ObjectId = require('mongoose').Types.ObjectId;
 const userData = require('./User');
 const Post = require('./Post')
+
 
 // create a Post
 module.exports.createPost = async(userId,desc,img)=>{
     const createdUser = new Post(userId,desc,img)
     try{
        const savedPost = await createdUser.save()
-        return savedPost
+       const newPost = await Post.findById(savedPost._id).populate('userId')
+        return newPost
     }
     catch(err){
         console.log(err);
@@ -20,13 +23,15 @@ module.exports.likePost = async({likedUsernameId,postId})=>{
         const fetchedPost = await Post.findById(postId);
         
         if(!fetchedPost.likes.includes(likedUsernameId)){
+
            const newPost= await fetchedPost.updateOne({$push:{likes:likedUsernameId}})
-         
-            return newPost;
+           const newLikedPost = await Post.findById(postId).populate('userId')
+            return newLikedPost;
         }
         else{  
             await fetchedPost.updateOne({$pull:{likes:likedUsernameId}});
-            return fetchedPost
+            const newLikedPost = await Post.findById(postId).populate('userId')
+            return newLikedPost
         }
     }
     catch(err){
@@ -41,16 +46,19 @@ module.exports.dislikePost = async({dislikedUsernameId,postId})=>{
         if(!fetchedPost.dislike.includes(dislikedUsernameId)){
           if(!fetchedPost.likes.includes(dislikedUsernameId)){
               const newPost= await fetchedPost.updateOne({$push:{dislike:dislikedUsernameId}})
-               return newPost;
+              const newDislikedPost = await Post.findById(postId).populate('userId') 
+              return newDislikedPost;
           }
           else{
             const newPost= await fetchedPost.updateOne({$push:{dislike:dislikedUsernameId},$pull:{likes:dislikedUsernameId}})
-               return newPost;
+            const newDislikedPost = await Post.findById(postId).populate('userId')    
+            return newDislikedPost;
           }
         }
         else{  
             await fetchedPost.updateOne({$pull:{dislike:dislikedUsernameId}});
-            return fetchedPost
+            const newDislikedPost = await Post.findById(postId).populate('userId') 
+            return newDislikedPost
         }
     }
     catch(err){
@@ -70,7 +78,7 @@ module.exports.getPost = async(id)=>{
 // get all Posts
 module.exports.getAllPosts = async(user)=>{
     try{
-        const allPosts = await Post.find({ userId: { $in: [user._id, ...user.friends] } }).populate('userId');     
+        const allPosts = await Post.find({ userId: { $in: [user._id, ...user.friends] } }).populate('userId').sort({createdAt:-1});     
         return allPosts;
     }
     
