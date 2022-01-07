@@ -21,7 +21,7 @@
     margin:7px;
 }
 .desc{
-    max-width:50vw;
+    
 }
 .postDesc{
     margin:8px 5px;
@@ -86,4 +86,7 @@
 
 .showCommentText{
     font-size: 13px;
+}
+.count{
+    margin: .3rem;
 }

@@ -9,7 +9,15 @@ const initialState ={
                 case ActionTypes.GET_ALL_POSTS:
                     return {...state,posts:payload}
                 case ActionTypes.CREATE_POST:
-                    return {...state,posts:payload}
+                    return {...state,posts:[payload,...state.posts]}
+                case ActionTypes.LIKE_POST:
+                    return {...state,posts: state.posts.map(post => 
+                        post._id === payload._id ? payload : post
+                    )}
+                case ActionTypes.DISLIKE_POST:
+                    return {...state,posts:state.posts.map(post => 
+                        post._id === payload._id ? payload : post
+                    )}
          default: return state;
      }
  }

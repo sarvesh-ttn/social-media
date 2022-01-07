@@ -1,5 +1,7 @@
 import React,{useRef,useEffect,useState} from 'react'
+import Button from '@material-ui/core/Button';
 import PhotoSizeSelectActualIcon from '@material-ui/icons/PhotoSizeSelectActual';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import { useSelector,useDispatch } from 'react-redux';
 import style from './createPost.module.css'
 import Avatar from "../../utils/avatar"
@@ -39,10 +41,10 @@ const CreatePost = () => {
             setFileInputState('');
             return;
         }
+         dispatch(createPost({description:inputRef.current.value,_id}))
             inputRef.current.value=""
             setSelectedFile('')
             setInputText('')
-        dispatch(createPost({description:inputRef.current.value,_id,image:null}))
     }
     return (
         <div className={style.createPost}>   
@@ -51,7 +53,12 @@ const CreatePost = () => {
             <input type="text" name="" id="" ref={inputRef} className={style.postInput} placeholder='Create a post' />
             <input type="file" className={style.postImage} onChange={fileInputHandler}
              value={fileInputState}/>
-            <button type='submit' className={style.shareButton}> Post</button>
+             <br />
+             <button
+        className={style.shareButton}
+      >
+        Post
+      </button>
                 </form>
            </div>
     )

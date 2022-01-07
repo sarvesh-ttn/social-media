@@ -10,5 +10,7 @@ export const ActionTypes = {
     GET_POST        : "GET POST",
     GET_ALL_POSTS   : "GET ALL POSTS",
     ADD_COMMENT     : "ADD COMMENT",
-    CREATE_POST     : "CREATE POST"
+    CREATE_POST     : "CREATE POST",
+    LIKE_POST       : "LIKE POST",
+    DISLIKE_POST    : "DISLIKE POST"    
 }
