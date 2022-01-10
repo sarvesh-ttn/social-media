@@ -1,20 +1,21 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef,useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import icon from "../../assets/avatar.jpg";
-import person from "../../assets/person.jpg";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import ThumbDownAltIcon from "@material-ui/icons/ThumbDownAlt";
-import CommentIcon from "@material-ui/icons/Comment";
+import FlagIcon from '@material-ui/icons/Flag';
 import style from "./dummypost.module.css";
 import Avatar from "../../utils/avatar";
-import axios from "../../axios";
+
 import { addComment } from "../../store/actions/postComment";
-import { likePost } from "../../store/actions/like-dislike";
-import { dislikePost } from "../../store/actions/like-dislike";
+import { likePost,flagPost,dislikePost } from "../../store/actions/like-dislike";
+
 
 const DummyPost = ({ data }) => {
   const inputRef = useRef();
-  const { createdAt, desc, img, userId, _id, likes, comments, dislike } = data;
+  const { createdAt, desc, img, userId, _id, likes, comments, dislike,isFlagged } = data;
+  const [flagged,setFlagged]=useState(isFlagged)
+  const [liked,setLiked] =useState();
+  const [disliked,setDisliked] =useState();
   const loggedUser = useSelector((state) => state.profile.user);
   const loggedUserId = loggedUser._id;
 
@@ -23,13 +24,15 @@ const DummyPost = ({ data }) => {
   const editedDate = new Date(createdAt).toLocaleTimeString();
 
   const likeHandler = async (loggedUserId) => {
-    console.log('_id from dummy',_id)
    dispatch(likePost({loggedUserId,_id}))
   };
   const dislikeHandler = async (loggedUserId) => {
-    console.log('_id from dummy',_id)
   dispatch(dislikePost({loggedUserId,_id}))
   };
+  const flagPostHandler = async()=>{
+    setFlagged(!flagged)
+     dispatch(flagPost(_id))
+  }
   const inputHandler = async (e) => {
     e.preventDefault();
     dispatch(
@@ -37,7 +40,10 @@ const DummyPost = ({ data }) => {
     );
     inputRef.current.value = "";
   };
-  useEffect(() => {}, [likes]);
+  useEffect(() => {
+    setLiked(likes.includes(loggedUserId))
+    setDisliked(dislike.includes(loggedUserId))
+  }, [likes]);
   return (
     <div className={style.dummyPost} key={_id}>
       <div className={style.title}>
@@ -46,6 +52,14 @@ const DummyPost = ({ data }) => {
           <h4>{userId.username}</h4>
           <h6>Created at {editedDate}</h6>
         </section>
+        <span>
+          <button className={style.flagButton}
+           onClick={() => {
+            flagPostHandler();
+          }}>
+            <FlagIcon htmlColor={flagged?'red':'blue'} />
+          </button>
+        </span>
       </div>
       <div className={style.desc}>
         <p className={style.postDesc}>{desc} </p>
@@ -54,7 +68,7 @@ const DummyPost = ({ data }) => {
       <div className={style.desc}>
        
           <span className={style.count}>
-            <ThumbUpAltIcon htmlColor="blue" />
+            <ThumbUpAltIcon htmlColor="blue"  />
             {likes?.length} likes
           </span>
           <span className={style.count}>
@@ -71,7 +85,7 @@ const DummyPost = ({ data }) => {
             likeHandler(loggedUserId);
           }}
         >
-          <ThumbUpAltIcon />
+          <ThumbUpAltIcon htmlColor={liked?'blue':'black'} />
           Like
         </button>
         <button
@@ -80,7 +94,7 @@ const DummyPost = ({ data }) => {
             dislikeHandler(loggedUserId);
           }}
         >
-          <ThumbDownAltIcon />
+          <ThumbDownAltIcon htmlColor={disliked?'blue':'black'} />
           Dislike
         </button>
       </div>
@@ -102,6 +116,7 @@ const DummyPost = ({ data }) => {
           </button>
         </form>
       </div>
+      {/* this loads all comments */}
       {comments.map((item) => {
         const { desc, username, profilePic, _id } = item;
         return (

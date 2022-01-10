@@ -8,6 +8,8 @@ const initialState ={
         
                 case ActionTypes.GET_ALL_POSTS:
                     return {...state,posts:payload}
+                    case ActionTypes.GET_FLAGGED_POSTS:
+                        return {...state,posts:payload}
                 case ActionTypes.CREATE_POST:
                     return {...state,posts:[payload,...state.posts]}
                 case ActionTypes.LIKE_POST:

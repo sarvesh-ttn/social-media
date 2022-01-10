@@ -26,3 +26,16 @@ export function dislikePost ({loggedUserId,_id}){ return async(dispatch)=>{
     dispatch({type:ActionTypes.DISLIKE_POST,payload:response.data})
 };
 }
+export function flagPost (_id){ return async(dispatch)=>{
+    console.log('_id',_id)
+    const response = await axios({
+        method:'PUT',
+        data:{
+            postId:_id
+        },
+        url:`/post/flagPost`
+    })
+
+    dispatch({type:ActionTypes.FLAG_POST,payload:response.data})
+};
+}

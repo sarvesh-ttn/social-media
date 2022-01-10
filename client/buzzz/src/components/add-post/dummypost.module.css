@@ -90,3 +90,12 @@
 .count{
     margin: .3rem;
 }
+.flagButton{
+    position: relative;
+    cursor: pointer;
+    left:25rem;
+    background-color: lightgray;
+    border-radius: 5px;
+    padding: 2px;
+    border: none;
+}
