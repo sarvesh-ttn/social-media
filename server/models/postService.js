@@ -65,6 +65,25 @@ module.exports.dislikePost = async({dislikedUsernameId,postId})=>{
         return err;
     }
 }
+module.exports.flagPost = async(postId)=>{
+try{
+    const getPost = await Post.findById(postId)
+    if(!getPost.isFlagged){
+        await getPost.updateOne({$set:{isFlagged:true}})
+        const updatedFlaggedPost = await Post.findById(postId);
+        return updatedFlaggedPost
+
+    }
+    else{
+        await getPost.updateOne({$set:{isFlagged:false}})
+        const updatedFlaggedPost = await Post.findById(postId);
+        return updatedFlaggedPost
+    }
+}
+catch(err){
+    return err;
+}
+}
 // get a Post
 module.exports.getPost = async(id)=>{
     try{
@@ -86,6 +105,19 @@ module.exports.getAllPosts = async(user)=>{
         return err;
     }
 }
+// get flagged posts
+module.exports.getFlaggedPosts = async(user)=>{
+    try{
+        const allFlaggedPosts = await Post.find({ isFlagged:true}).populate('userId').sort({createdAt:-1});     
+        console.log(allFlaggedPosts,'allFlaggedPosts');
+        return allFlaggedPosts;
+    }
+    
+    catch(err){
+        return err;
+    }
+}
+
 
 // comment on a Post 
 module.exports.addComment = async({desc,userId,postId})=>{
