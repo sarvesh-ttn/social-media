@@ -3,8 +3,14 @@
     background-color: rgb(255, 255, 255);
     margin:1vw;
 }
-.adminBtn{
+.adminBtnDiv{
     display: flex;
     align-items: center;
     justify-content: end;
+    margin:.5rem 1rem;
+}
+.adminBtn{
+    border-radius: 5px;
+    margin-left:.2rem;
+    border: none;
 }

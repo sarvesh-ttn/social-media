@@ -1,7 +1,7 @@
 import { ActionTypes } from "../contents/action-type";
 import axios from "../../axios"
 export function likePost ({loggedUserId,_id}){return async(dispatch)=>{
-    console.log('_id',_id)
+
     const response = await axios({
         method:'PUT',
         data:{
@@ -14,7 +14,7 @@ export function likePost ({loggedUserId,_id}){return async(dispatch)=>{
 };
 }
 export function dislikePost ({loggedUserId,_id}){ return async(dispatch)=>{
-    console.log('_id',_id)
+  
     const response = await axios({
         method:'PUT',
         data:{
@@ -27,7 +27,7 @@ export function dislikePost ({loggedUserId,_id}){ return async(dispatch)=>{
 };
 }
 export function flagPost (_id){ return async(dispatch)=>{
-    console.log('_id',_id)
+
     const response = await axios({
         method:'PUT',
         data:{

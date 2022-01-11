@@ -7,7 +7,7 @@ import style from "./dummypost.module.css";
 import Avatar from "../../utils/avatar";
 
 import { addComment } from "../../store/actions/postComment";
-import { likePost,flagPost,dislikePost } from "../../store/actions/like-dislike";
+import { likePost,dislikePost,flagPost } from "../../store/actions/like-dislike";
 
 
 const DummyPost = ({ data }) => {

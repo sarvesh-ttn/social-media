@@ -13,5 +13,5 @@ export const ActionTypes = {
     CREATE_POST      : "CREATE POST",
     LIKE_POST        : "LIKE POST",
     DISLIKE_POST     : "DISLIKE POST" ,
-    GET_FLAGGED_POSTS: "FLAGGED POST"   
+    GET_FLAGGED_POSTS: "FLAGGED POST",  
 }
