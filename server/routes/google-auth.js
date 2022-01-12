@@ -1,17 +1,10 @@
 const router    = require('express').Router();
 const passport  = require('passport');
+const jwt           = require('jsonwebtoken');
 require('../passport-setup');
 
 
-// middleware
-const isLoggedIn =(req,res,next)=>{
-    if(req.user){
-        next()
-    }
-    else{
-        res.sendStatus(401);
-    }
-}
+
 
 
 router.get('/google',
@@ -21,10 +14,11 @@ router.get('/google',
   router.get('/google/callback', 
     passport.authenticate('google', { failureRedirect: 'http://localhost:3000' }),
     function(req, res) {
-      // Successful authentication, redirect home.
-    //   console.log('hello');
-    //   console.log(req.user);
-      res.redirect('http://localhost:3000/home');
+     const token = jwt.sign({ foo: 'buzzz' },'myprivatekey', function(err, token) {
+        console.log(token,'glogin');
+      });
+      res.set('location','http://localhost:3000/home')
+      res.status(301).json(token);
     });
 
 router.get('/logout',(req,res)=>{

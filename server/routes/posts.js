@@ -1,6 +1,14 @@
 const router         = require('express').Router();
 const postController = require('../controllers/postController')
 
+router.use((req,res,next)=>{
+    if(req.isAuthenticated()){
+        next();
+    }
+    else{
+        res.status(401).json('Not Authorised')
+    }
+})
 router.post('/create',postController.createPost)
 router.put("/like/:id",postController.likePost)
 router.put("/dislike/:id",postController.dislikePost)

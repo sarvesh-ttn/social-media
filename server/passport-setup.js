@@ -23,15 +23,13 @@ passport.use(new GoogleStrategy({
     if(profile._json.hd === "tothenew.com"){
         try{
           
-          const fetchedUser = await User.findOne({
-            email:profile.emails[0].value
-          })
-
-        if(fetchedUser){
+          const fetchedUser = await User.findOne({email:profile.emails[0].value})
+          
+          if(fetchedUser){
           console.log(fetchedUser);
           return done(null,fetchedUser)
-        }
-        const createdUser = await User.create({
+          }
+          const createdUser = await User.create({
           userId: profile.id,
           username: profile.displayName,
           email: profile.emails ? profile.emails[0].value : "",
