@@ -1,6 +1,15 @@
 const router            = require('express').Router();
 const userController    = require('../controllers/userController')
 
+router.use((req,res,next)=>{
+    if(req.isAuthenticated()){
+        next();
+    }
+    else{
+        res.status(401).send()
+    }
+})
+
 router.get('/',userController.getUser)
 // dummy api
 router.get('/getAll',userController.getAllUser)

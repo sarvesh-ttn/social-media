@@ -23,6 +23,7 @@ app.use(cookieSession({
     name:'buzz-session',
     keys:['key1','key2']
 }))
+
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.json());
@@ -41,4 +42,3 @@ app.use('/post',postRoute)
 app.listen(PORT,()=>{
     console.log(`Server running at PORT ${PORT}`);
 })
-// module.exports = dbUser

@@ -17,7 +17,7 @@ const UserProfileCard = () => {
                 <img src={icon} alt="" />
             </div>
             <div className={styles.icondiv}>
-            <Avatar image={profilePic} />
+            <Avatar Image={profilePic} />
             </div>
             <div className={styles.userdetails}>
                 <span>{username}</span>

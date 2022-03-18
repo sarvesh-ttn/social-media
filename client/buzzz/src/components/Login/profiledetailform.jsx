@@ -1,27 +1,23 @@
+
 import TextField from "@material-ui/core/TextField";
 import style from "./profiledetailform.module.css";
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
  import InputLabel from "@material-ui/core/InputLabel"
 import { Button } from "@material-ui/core";
-const ProfileDetailForm = () => {
+const ProfileDetailForm = ({data}) => {
   return (
     <div>
       <form className={style.root} noValidate autoComplete="off">
         <div className={style.inputWrapper}>
           <div className={style.input}>
-          <InputLabel htmlFor="grouped-select">First Name</InputLabel>
+          <InputLabel htmlFor="grouped-select" >Full Name</InputLabel>
             <TextField
               id="outlined-basic"
               variant="outlined"
+              defaultValue={data.username}
             />
-          </div>
-          <div className={style.input}>
-          <InputLabel htmlFor="grouped-select">Last Name</InputLabel>
-            <TextField
-              id="outlined-basic"
-              variant="outlined"
-            />
+         
           </div>
         </div>
         <div className={style.inputWrapper}>

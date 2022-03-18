@@ -20,17 +20,16 @@ passport.use(new GoogleStrategy({
     callbackURL: "http://localhost:5000/google/callback"
   },
   async function(accessToken, refreshToken, profile, done) {
+    if(profile._json.hd === "tothenew.com"){
         try{
-          console.log(typeof User);
-          const fetchedUser = await User.findOne({
-            email:profile.emails[0].value
-          })
-
-        if(fetchedUser){
+          
+          const fetchedUser = await User.findOne({email:profile.emails[0].value})
+          
+          if(fetchedUser){
           console.log(fetchedUser);
           return done(null,fetchedUser)
-        }
-        const createdUser = await User.create({
+          }
+          const createdUser = await User.create({
           userId: profile.id,
           username: profile.displayName,
           email: profile.emails ? profile.emails[0].value : "",
@@ -45,12 +44,12 @@ passport.use(new GoogleStrategy({
         }
          return done(null, profile);
        }
+       else{
+        done(new Error("Invalid host domain"));
+       }
+      }
 ));
 
-// if(profile._json.hd === "yourdomain.com"){
-//   // find or create user in database, etc
-//   User.find({ id: profile.id }).done(done);
-// }else{
-//   // fail        
-//   done(new Error("Invalid host domain"));
-// }
+
+    
+  
